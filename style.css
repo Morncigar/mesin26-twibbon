@@ -95,7 +95,7 @@ body {
 
 .tech-ticker span {
     display: inline-block;
-    animation: tickerScroll 25s linear infinite;
+    animation: tickerScroll 10s linear infinite;
 }
 
 @keyframes tickerScroll {
