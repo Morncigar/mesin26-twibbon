@@ -85,17 +85,28 @@ body {
     font-size: 0.75rem;
     padding: 8px 0;
     border-bottom: var(--border-width) solid rgba(255, 255, 255, 0.15);
-    display: flex;
-    gap: 40px;
-    white-space: nowrap;
     overflow: hidden;
+    white-space: nowrap;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    width: 100%;
+}
+
+.tech-ticker-track {
+    display: inline-block;
+    white-space: nowrap;
+    animation: tickerScroll 12s linear infinite;
+    will-change: transform;
 }
 
 .tech-ticker span {
     display: inline-block;
-    animation: tickerScroll 10s linear infinite;
+    padding-right: 30px;
+}
+
+@keyframes tickerScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 
 @keyframes tickerScroll {
