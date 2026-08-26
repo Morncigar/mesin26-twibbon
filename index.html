@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOW PLAYING — MESIN ’26 | Teknik Mesin ITENAS</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Top Technical Banner / Ticker -->
+    <div class="tech-ticker">
+        <span>// MECHANICAL ENGINEERING ITENAS 2026</span>
+        <span>// NOW PLAYING — SESSION ’26</span>
+        <span>// SYSTEM READY</span>
+    </div>
+
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <div class="container hero-grid">
+            <div class="hero-left">
+                <div class="mono-label">
+                    <span class="dot-indicator"></span>
+                    MECHANICAL ENGINEERING — ITENAS 2026
+                </div>
+                <h1 class="hero-title">
+                    <span class="outline-text">NOW</span><br>
+                    PLAYING
+                </h1>
+                <div class="hero-sub-wrap">
+                    <h2 class="hero-sub">MESIN ’26</h2>
+                    <p class="hero-desc">Your new chapter starts here. Load your frame, adjust your position, and broadcast your identity.</p>
+                </div>
+                <div class="hero-cta-group">
+                    <a href="#generator" class="btn btn-primary">
+                        <span>PASANG TWIBBON</span>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.333 8h9.334M8 3.333L12.667 8 8 12.667" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="album-badge">
+                    <div class="vinyl-grooves"></div>
+                    <div class="badge-center">
+                        <span class="display-num">’26</span>
+                        <span class="mono-sub">ITENAS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="section-divider"></div>
+
+    <!-- INSTRUCTION SECTION -->
+    <section class="instructions">
+        <div class="container">
+            <div class="section-header">
+                <span class="mono-label">// WORKFLOW</span>
+                <h2>HOW IT WORKS</h2>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <span class="step-number">01</span>
+                    <h3>UPLOAD</h3>
+                    <p>Upload foto terbaikmu dengan format JPG, PNG, atau WEBP.</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-number">02</span>
+                    <h3>ADJUST</h3>
+                    <p>Atur posisi, zoom, atau geser foto langsung di dalam preview canvas.</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-number">03</span>
+                    <h3>DOWNLOAD</h3>
+                    <p>Unduh hasil akhir resolusi penuh dan gunakan sebagai foto profilmu.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- TWIBBON GENERATOR SECTION -->
+    <section id="generator" class="generator-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="mono-label">// INTERFACE</span>
+                <h2>TWIBBON STUDIO</h2>
+            </div>
+
+            <div class="generator-workspace">
+                <!-- Left Column: Controls & Upload -->
+                <div class="workspace-controls">
+                    <div class="control-box upload-box">
+                        <label class="mono-label">STEP 1: SELECT SOURCE IMAGE</label>
+                        <div class="file-drop-area" id="dropArea">
+                            <input type="file" id="imageLoader" accept="image/jpeg, image/png, image/webp" class="file-input">
+                            <div class="file-msg" id="fileMsg">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 16V6m0 0l-4 4m4-4l4 4M4 20h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                <span>CHOOSE PHOTO OR DROP HERE</span>
+                                <small>JPG, PNG, WEBP (Max 10MB)</small>
+                            </div>
+                        </div>
+                        <div id="errorMsg" class="error-message hidden">PLEASE UPLOAD A PHOTO FIRST.</div>
+                    </div>
+
+                    <div class="control-box adjustments-box" id="adjustmentsBox">
+                        <label class="mono-label">STEP 2: POSITION & SCALE</label>
+                        
+                        <div class="control-group">
+                            <div class="control-label-row">
+                                <span>ZOOM</span>
+                                <span id="zoomVal" class="mono-value">100%</span>
+                            </div>
+                            <input type="range" id="zoomRange" min="50" max="300" value="100" class="brut-range">
+                        </div>
+
+                        <div class="control-grid-buttons">
+                            <button class="btn btn-secondary" id="btnMoveUp">↑ UP</button>
+                            <button class="btn btn-secondary" id="btnMoveDown">↓ DOWN</button>
+                            <button class="btn btn-secondary" id="btnMoveLeft">← LEFT</button>
+                            <button class="btn btn-secondary" id="btnMoveRight">→ RIGHT</button>
+                        </div>
+
+                        <button class="btn btn-outline full-width" id="btnReset">RESET POSITION</button>
+                    </div>
+                </div>
+
+                <!-- Right Column: Live Preview & Export -->
+                <div class="workspace-preview">
+                    <div class="control-box preview-box">
+                        <div class="preview-header-row">
+                            <label class="mono-label">LIVE PREVIEW [1080×1080px]</label>
+                            <span class="live-indicator"><span class="dot-indicator"></span>ACTIVE</span>
+                        </div>
+
+                        <div class="canvas-container" id="canvasContainer">
+                            <canvas id="twibbonCanvas" width="1080" height="1080"></canvas>
+                            <div class="canvas-placeholder" id="canvasPlaceholder">
+                                <div class="placeholder-content">
+                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/><path d="M21 15l-5-5L5 21" stroke="currentColor" stroke-width="2"/></svg>
+                                    <p>NO IMAGE LOADED YET</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="action-buttons-group">
+                            <button class="btn btn-primary full-width" id="btnDownload" disabled>
+                                <span>DOWNLOAD TWIBBON (.PNG)</span>
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M14 10v2.667A1.333 1.333 0 0112.667 14H3.333A1.333 1.333 0 012 12.667V10m8-3.333L8 10m0 0L4.667 6.667M8 10V2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- CAPTION SECTION -->
+    <section class="caption-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="mono-label">// SOCIAL READY</span>
+                <h2>COPY YOUR CAPTION</h2>
+            </div>
+            
+            <div class="caption-box-wrapper">
+                <div class="caption-content" id="captionText">NOW PLAYING — MESIN ’26 🎧
+
+A new chapter starts here.
+Mechanical Engineering ITENAS 2026.
+
+#NOWPLAYINGMESIN26
+#MESIN26
+#TeknikMesinItenas</div>
+                <button class="btn btn-secondary" id="btnCopyCaption">
+                    <span>COPY CAPTION</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-flex">
+            <div class="footer-left">
+                <span class="footer-brand">NOW PLAYING — MESIN ’26</span>
+                <p>Mechanical Engineering ITENAS 2026</p>
+            </div>
+            <div class="footer-right">
+                <span class="mono-label">MADE FOR MESIN ’26</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script JS -->
+    <script src="script.js"></script>
+</body>
+</html>
