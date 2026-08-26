@@ -95,7 +95,7 @@ body {
 .tech-ticker-track {
     display: inline-flex;
     white-space: nowrap;
-    animation: tickerScroll 12s linear infinite;
+    animation: tickerScroll 18s linear infinite;
     will-change: transform;
 }
 
