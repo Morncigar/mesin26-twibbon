@@ -9,11 +9,12 @@
     --color-white: #FFFFFF;
     --color-black: #000000;
     
-    --font-sans: 'Space Grotesk', sans-serif;
-    --font-mono: 'DM Mono', monospace;
-    --font-display: 'Archivo Black', sans-serif;
+    --font-sans: 'Cabinet Grotesk', sans-serif;
+    --font-mono: 'Space Mono', monospace;
+    --font-display: 'Clash Display', sans-serif;
     
     --border-width: 2px;
+}
 }
 
 * {
