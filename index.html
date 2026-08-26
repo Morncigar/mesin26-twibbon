@@ -190,7 +190,40 @@ Mechanical Engineering ITENAS 2026.
             </div>
         </div>
     </section>
+<!-- Tombol Download & Share -->
+<div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 15px;">
+    <!-- Tombol Download -->
+    <a href="assets/vip-pass.png" download="VIP-Pass-Mesin26.png" style="padding: 12px 20px; background: #ff4500; color: #fff; text-decoration: none; font-weight: bold; border-radius: 8px; font-size: 14px;">
+        📥 DOWNLOAD TIKET
+    </a>
+    
+    <!-- Tombol Share Native HP -->
+    <button onclick="shareTicket()" style="padding: 12px 20px; background: #222; color: #fff; border: 1px solid rgba(255,255,255,0.3); font-weight: bold; border-radius: 8px; font-size: 14px; cursor: pointer;">
+        🚀 SHARE KE SOSMED
+    </button>
+</div>
 
+<script>
+async function shareTicket() {
+    if (navigator.share) {
+        try {
+            const response = await fetch('assets/vip-pass.png');
+            const blob = await response.blob();
+            const file = new File([blob], 'VIP-Pass-Mesin26.png', { type: blob.type });
+            
+            await navigator.share({
+                title: 'VIP Backstage Pass Mesin 26',
+                text: 'Nih tiket VIP gue buat Now Playing Mesin 26! 🔥',
+                files: [file]
+            });
+        } catch (error) {
+            console.log('Sharing dibatalkan atau tidak didukung');
+        }
+    } else {
+        alert('Fitur share langsung tidak didukung di browser ini, silakan gunakan tombol Download ya!');
+    }
+}
+</script>
     <!-- FOOTER -->
     <footer class="footer">
         <div class="container footer-flex">
