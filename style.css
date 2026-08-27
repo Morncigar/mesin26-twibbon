@@ -403,7 +403,7 @@ body {
 
 .canvas-container {
     width: 100%;
-    aspect-ratio: 1/1;
+    aspect-ratio: 4/5;
     background-color: var(--color-black);
     border: var(--border-width) solid var(--color-white);
     position: relative;
