@@ -1,9 +1,10 @@
 /* =================================================_
-   NOW PLAYING — MESIN ’26 | Client-Side Image Compositor
+   NOW PLAYING — MESIN ’26 | Client-Side Image Compositor (4:5 Version)
    ================================================= */
 
 const FRAME_URL = "assets/frame.png";
-const EXPORT_SIZE = 1080;
+const EXPORT_WIDTH = 1080;
+const EXPORT_HEIGHT = 1350;
 
 let userImage = null;
 let frameImage = null;
@@ -40,8 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function initCanvasSize() {
-    canvas.width = EXPORT_SIZE;
-    canvas.height = EXPORT_SIZE;
+    canvas.width = EXPORT_WIDTH;
+    canvas.height = EXPORT_HEIGHT;
 }
 
 function loadFrameImage() {
@@ -88,7 +89,8 @@ function setupEventListeners() {
         const targetScalePercent = parseInt(e.target.value);
         zoomVal.textContent = targetScalePercent + '%';
         
-        const baseScale = Math.max(EXPORT_SIZE / userImage.width, EXPORT_SIZE / userImage.height);
+        // Update base scale calculation for width and height separately
+        const baseScale = Math.max(EXPORT_WIDTH / userImage.width, EXPORT_HEIGHT / userImage.height);
         imgScale = baseScale * (targetScalePercent / 100);
         redrawCanvas();
     });
@@ -126,7 +128,8 @@ function setupEventListeners() {
         lastY = e.clientY;
 
         const rect = container.getBoundingClientRect();
-        const scaleFactor = EXPORT_SIZE / rect.width;
+        // Width is used as the base reference for translation scale factor
+        const scaleFactor = EXPORT_WIDTH / rect.width;
 
         imgX += deltaX * scaleFactor;
         imgY += deltaY * scaleFactor;
@@ -188,18 +191,18 @@ function handleFileSelect(e) {
 
 function resetImageTransform() {
     if (!userImage) return;
-    const baseScale = Math.max(EXPORT_SIZE / userImage.width, EXPORT_SIZE / userImage.height);
+    const baseScale = Math.max(EXPORT_WIDTH / userImage.width, EXPORT_HEIGHT / userImage.height);
     imgScale = baseScale;
-    imgX = (EXPORT_SIZE - (userImage.width * imgScale)) / 2;
-    imgY = (EXPORT_SIZE - (userImage.height * imgScale)) / 2;
+    imgX = (EXPORT_WIDTH - (userImage.width * imgScale)) / 2;
+    imgY = (EXPORT_HEIGHT - (userImage.height * imgScale)) / 2;
     zoomRange.value = 100;
     zoomVal.textContent = '100%';
 }
 
 function redrawCanvas() {
-    ctx.clearRect(0, 0, EXPORT_SIZE, EXPORT_SIZE);
+    ctx.clearRect(0, 0, EXPORT_WIDTH, EXPORT_HEIGHT);
     ctx.fillStyle = '#041E41';
-    ctx.fillRect(0, 0, EXPORT_SIZE, EXPORT_SIZE);
+    ctx.fillRect(0, 0, EXPORT_WIDTH, EXPORT_HEIGHT);
 
     if (userImage) {
         ctx.save();
@@ -210,11 +213,11 @@ function redrawCanvas() {
     }
 
     if (isFrameLoaded && frameImage) {
-        ctx.drawImage(frameImage, 0, 0, EXPORT_SIZE, EXPORT_SIZE);
+        ctx.drawImage(frameImage, 0, 0, EXPORT_WIDTH, EXPORT_HEIGHT);
     } else {
         ctx.strokeStyle = '#FF4D00';
         ctx.lineWidth = 16;
-        ctx.strokeRect(8, 8, EXPORT_SIZE - 16, EXPORT_SIZE - 16);
+        ctx.strokeRect(8, 8, EXPORT_WIDTH - 16, EXPORT_HEIGHT - 16);
     }
 }
 
