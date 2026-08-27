@@ -2,7 +2,7 @@
    NOW PLAYING — MESIN ’26 | Client-Side Image Compositor (4:5 Version)
    ================================================= */
 
-const FRAME_URL = "assets/frame-final.png";
+const FRAME_URL = "assets/twibbon.png";
 const EXPORT_WIDTH = 1080;
 const EXPORT_HEIGHT = 1350;
 
